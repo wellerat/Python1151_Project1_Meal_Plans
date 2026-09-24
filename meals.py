@@ -53,7 +53,7 @@ def add_additional_meals():
         if meal_option == "Q":
             break
 
-        meal_description = input("\nEnter additional meal:")
+        meal_description = input("\nEnter additional meal:  ")
 
         if meal_option == 'B':   
             meals["breakfast"].append(meal_description)

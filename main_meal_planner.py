@@ -21,12 +21,14 @@ import random
 days = ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 def main():
 
-    print("\n----     Meal Planner     ----")
-    add_meals = input('\nWould you like to add meals to the current options? (Y/N)   ')
+    print("\n\n               ----     Meal Planner    ----")
+    print('\n\nThis program will create a meal plan for up to a week.')
+    print('The plan will include a breakfast, lunch, and dinner option.')
+    add_meals = input('\nWould you like to add meals to the current options? (Y/N)   ').upper()
 
     while (add_meals != 'Y') and (add_meals != 'N'):
         print('\nInvalid response please pick "N" or "Y"')
-        add_meals = input('\nWould you like to add meals to the current options? (Y/N)   ')
+        add_meals = input('Would you like to add meals to the current options? (Y/N)   ').upper()
 
     if add_meals == 'Y':
         add_additional_meals()
