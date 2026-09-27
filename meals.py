@@ -26,7 +26,7 @@ meals = {
         "Fried chicken",
         "Lasagna",
         "Chicken Piccata",
-        "Genera Tso's chicken",
+        "General Tso's chicken",
         "Baked ziti",
         "Tacos",
         "Burrito Bowl",

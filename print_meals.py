@@ -2,6 +2,7 @@ from meals import meals
 import random
 
 def print_meals(num_of_days,start_day,days):
+    """ Print a meal plan starting on the giving day and the correct number of days"""
     start_day_index = days.index(start_day)
     
     plan_days = []
