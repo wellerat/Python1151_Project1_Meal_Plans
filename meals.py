@@ -3,6 +3,10 @@ import json
 def load_meals():
     with open("meals.json", "r") as file:
         return json.load(file)
+
+def save_meals(meals):
+    with open("meals.json", "w") as file:
+        json.dump(meals, file, indent=4)    
     
 meals = load_meals()
 
@@ -31,6 +35,8 @@ def add_additional_meals():
             meals["lunch"].append(meal_description)
         elif meal_option == 'D':
             meals["dinner"].append(meal_description)
+
+        save_meals(meals)   
 
         print(f"\n{meal_description} has been added.")
 
