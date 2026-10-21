@@ -1,40 +1,10 @@
-meals = {
-    "breakfast": [
-        "Greek yogurt parfait",
-        "Cereal with toast",
-        "Fruit smoothie",
-        "Biscuits and gravy",
-        "Pancakes with maple syrup",
-        "Pop Tarts",
-        "French Toast with bacon",
-        "Eggs over easy, side of hash browns",
-        "Bagel and creamcheese",
-        "Cinnamon Roll",
-    ],
-    "lunch": [
-        "Traditional club sandwich",
-        "Philly cheese steak",
-        "Ham and cheese sandwich",
-        "Caesar salad",
-        "Tossed salad",
-        "Chicken Salad",
-        "Soup and salad",
-        "Grilled cheese",
-        "Veggie wrap"
-    ],
-    "dinner":[
-        "Fried chicken",
-        "Lasagna",
-        "Chicken Piccata",
-        "General Tso's chicken",
-        "Baked ziti",
-        "Tacos",
-        "Burrito Bowl",
-        "Sirloin Steak",
-        "Veggie plate"
-    ]
+import json
 
-}
+def load_meals():
+    with open("meals.json", "r") as file:
+        return json.load(file)
+    
+meals = load_meals()
 
 def add_additional_meals():
     """Add additional meals to breakfast, lunch or dinner until user quits"""
