@@ -1,8 +1,23 @@
 import json
 
 def load_meals():
-    with open("meals.json", "r") as file:
-        return json.load(file)
+    try:
+        with open("meals.json", "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        print("Meal file not found.")
+        return {
+            "breakfast":[],
+            "lunch":[],
+            "dinner":[]
+            }
+    except json.JSONDecodeError:
+        print("Meal file contains invalid JSON")
+        return {
+            "breakfast":[],
+            "lunch":[],
+            "dinner":[]
+        }
 
 def save_meals(meals):
     with open("meals.json", "w") as file:

@@ -9,7 +9,9 @@
         "French Toast with bacon",
         "Eggs over easy, side of hash browns",
         "Bagel and creamcheese",
-        "Cinnamon Roll"
+        "Cinnamon Roll",
+        "blueberry muffin",
+        "corn muffin"
     ],
     "lunch": [
         "Traditional club sandwich",
@@ -20,9 +22,10 @@
         "Chicken Salad",
         "Soup and salad",
         "Grilled cheese",
-        "Veggie wrap"
+        "Veggie wrap",
+        "Flaming Hot Tacos from TACO JOE"
     ],
-    "dinner":[
+    "dinner": [
         "Fried chicken",
         "Lasagna",
         "Chicken Piccata",
@@ -33,5 +36,4 @@
         "Sirloin Steak",
         "Veggie plate"
     ]
-
 }
