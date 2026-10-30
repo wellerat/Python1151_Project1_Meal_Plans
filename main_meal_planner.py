@@ -14,8 +14,9 @@ Starter code:
 Date:
     Sept. 21, 2026
 """
-from meals import meals, add_additional_meals
+from meals import meals, add_additional_meals, display_meals
 from print_meals import print_meals
+
 import random
 
 days = ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
@@ -70,5 +71,5 @@ def main():
     start_day = get_start_day()
 
     print_meals(num_of_days,start_day,days)
-    
 main()
+display_meals()

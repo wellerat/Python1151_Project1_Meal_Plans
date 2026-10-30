@@ -57,4 +57,35 @@ def add_additional_meals():
 
     print("\nAdding new meals complete.")   
 
+def display_meals():
+    """Display meals from a selected category."""
 
+    print("\nWhich meal category would you like to view:")
+    print("Breakfast (B)")
+    print("Lunch (L)")
+    print("Dinner (D)")
+
+    category = input("\nEnter B, L, or D:  ").upper()
+
+    while category not in ("B","L","D"):
+        print("Please enter B, L, or D.")
+        category = input("\nEnter B, L, or D:  ").upper()
+
+    if category == "B":
+        print("\nBreakfast Meals")
+        print('-----------------')
+        for meal in meals["breakfast"]:
+            print(meal)
+
+    elif category == "L":
+        print("\nLunch Meals")
+        print('-----------------')
+        for meal in meals["lunch"]:
+            print(meal)
+        
+    else: 
+        print("\nDinner Meals")
+        print('-----------------')
+        for meal in meals["dinner"]:
+            print(meal)
+            
