@@ -88,4 +88,40 @@ def display_meals():
         print('-----------------')
         for meal in meals["dinner"]:
             print(meal)
-            
+
+def delete_meal():
+    """Remove a meal from selected category."""
+
+    print("\nWhich category would you like to delete from?")
+    print("Breakfast (B)")
+    print("Lunch (L)")
+    print("Dinner (D)")
+
+    category = input("\nEnter B, L, or D:  ").upper()
+    
+    while category not in ("B","L","D"):
+        print("Please enter B, L, or D.")
+        category = input("\nEnter B, L, or D:  ").upper()
+
+    if category =="B":
+        category_name = "breakfast"
+    elif category == "L":
+        category_name = "lunch"
+    else:
+        category_name = "dinner"
+
+    print(f"\n{category_name.capitalize()} Meals")
+    print("-------------------------")
+
+    for index, meal in enumerate(meals[category_name], start=1):
+        print(f"{index}.{meal}")
+
+    choice = int(input("\nEnter meal number ot delete:  "))   
+
+    deleted_meal = meals[category_name].pop(choice - 1)     
+
+    save_meals(meals)
+
+    print(f"\n{deleted_meal} has been removed.")
+        
+    

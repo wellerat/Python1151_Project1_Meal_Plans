@@ -14,7 +14,7 @@ Starter code:
 Date:
     Sept. 21, 2026
 """
-from meals import meals, add_additional_meals, display_meals
+from meals import meals, add_additional_meals, display_meals, delete_meal
 from print_meals import print_meals
 
 import random
@@ -73,3 +73,4 @@ def main():
     print_meals(num_of_days,start_day,days)
 main()
 display_meals()
+delete_meal()
