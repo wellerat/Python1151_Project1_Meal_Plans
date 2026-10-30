@@ -14,7 +14,11 @@ Starter code:
 Date:
     Sept. 21, 2026
 """
-from meals import meals, add_additional_meals, display_meals, delete_meal
+from meals import (
+    meals, 
+    add_additional_meals, 
+    display_meals, 
+    delete_meal)
 from print_meals import print_meals
 
 import random
@@ -50,6 +54,21 @@ def get_start_day():
         else:
             print(f"Invalid entry.  Please choose one of {days}")
 
+def display_menu():
+    """Display the main menu and return the user's choice"""
+
+    print("\nMeal Planner Options")
+    print("----------------------") 
+    print("1. Generate Meal Plan")
+    print("2. View Meal Options")
+    print("3. Add Meals") 
+    print("4. Delete Meals")
+    print("5. Exit")
+
+    choice = input("\nEnter your choice (1-5):  ")
+
+    return choice              
+
 
 def main():
     """Main program flow for the program Meal Planner"""
@@ -57,20 +76,32 @@ def main():
     print("\n\n               ----     Meal Planner    ----")
     print('\n\nThis program will create a meal plan for up to a week.')
     print('The plan will include a breakfast, lunch, and dinner option.')
-    add_meals = input('\nWould you like to add meals to the current options? (Y/N)   ').upper()
+    while True:
 
-    while (add_meals != 'Y') and (add_meals != 'N'):
-        print('\nInvalid response please pick "N" or "Y"')
-        add_meals = input('Would you like to add meals to the current options? (Y/N)   ').upper()
+        choice = display_menu()
 
-    if add_meals == 'Y':
-        add_additional_meals()
+        if choice == '1':
+            num_of_days = get_days()
+            start_day = get_start_day()
 
-    num_of_days = get_days()
+            print_meals(
+                num_of_days, start_day, days
+            )
 
-    start_day = get_start_day()
+        elif choice =="2":
+            display_meals()
 
-    print_meals(num_of_days,start_day,days)
+        elif choice == "3":
+            add_additional_meals()
+
+        elif choice == "4":
+            delete_meal()
+
+        elif choice =="5":
+            print("\nThank you for using Meal Planner.")
+            break
+        else:
+            print("Please enter a valid option")    
+
+
 main()
-display_meals()
-delete_meal()
