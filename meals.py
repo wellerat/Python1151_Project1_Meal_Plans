@@ -116,8 +116,18 @@ def delete_meal():
     for index, meal in enumerate(meals[category_name], start=1):
         print(f"{index}.{meal}")
 
-    choice = int(input("\nEnter meal number ot delete:  "))   
+    while True:
+        try:
+            choice = int(input("\nEnter meal number ot delete:  "))   
 
+            if 1 <= choice <= len(meals[category_name]):
+                break
+
+            print("Please select a valid meal number.")
+
+        except ValueError:
+            print("Please enter a whole number.")
+            
     deleted_meal = meals[category_name].pop(choice - 1)     
 
     save_meals(meals)
