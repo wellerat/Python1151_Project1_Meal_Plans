@@ -1,6 +1,7 @@
 class Meal:
     """Represent a single meal option"""
     def __init__(self, name, meal_type):
+        """Initialize a meal wiht a name and category"""
         self.name = name
         self.meal_type = meal_type
 
@@ -9,4 +10,5 @@ class Meal:
         return f"{self.name} ({self.meal_type})"
 
 class FavoriteMeal(Meal):
+    """Represent a favorite meal selected by the user - future project"""
     pass    

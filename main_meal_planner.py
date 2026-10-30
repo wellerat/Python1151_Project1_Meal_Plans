@@ -1,9 +1,10 @@
 """
-Meal Planner - Project 1
+Meal Planner - Project 2
 
 Description
-    This program will print out a set of meals for the amount
-    of days you would like the plan to run.
+    Main program file for the Meal Planner Application.
+    This program allows users to view meals, add meals, delete meals, 
+    and generate meal plans fr 1-7 days.
 
 Author:
     Ann Cooper
@@ -12,7 +13,7 @@ Starter code:
     None
 
 Date:
-    Sept. 21, 2026
+    October 2026
 """
 from meals import (
     meals, 
@@ -23,10 +24,11 @@ from print_meals import print_meals
 
 import random
 
+# Valid says used for meal plan generation
 days = ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 
 def get_days():
-    """Ask the user for number of days (1-7) and validate input"""
+    """Ask the user for number of days (1-7) to plan meals"""
     while True:
         value = input("\nMeal planning for how many days (1-7)?   ")
 
@@ -43,7 +45,7 @@ def get_days():
 
 
 def get_start_day():
-    """Ask the user for a valid start day and check input"""
+    """Prompts the user for a starting day of the week"""
     while True:
         value = input(f"\nStarting on what day? (ex. Monday):  ")     
 
@@ -71,7 +73,10 @@ def display_menu():
 
 
 def main():
-    """Main program flow for the program Meal Planner"""
+    """Run the Meal Planner application.
+       Displays the main menu and routes user selections
+       to the appropriate program functionality
+    """
 
     print("\n\n               ----     Meal Planner    ----")
     print('\n\nThis program will create a meal plan for up to a week.')

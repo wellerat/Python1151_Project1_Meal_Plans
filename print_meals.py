@@ -1,3 +1,22 @@
+"""
+Meal Planner - Meal Plan Generation Module
+
+Description:
+    This module generates and displays meal plans based
+    on the user's selected number of days and starting day.
+    Meal, DayPlan, and WeekPlan objects are used to bulid the meal plan
+    
+Author:
+    Ann Cooper
+    
+Starter Code:
+    None
+    
+Date:
+    October 2026
+"""
+
+
 from meals import meals
 from objects.weekplan import WeekPlan
 from objects.dayplan import DayPlan
@@ -25,9 +44,10 @@ def print_meals(num_of_days,start_day,days):
         day_plan = DayPlan(breakfast,lunch,dinner)
         week_plan.add_day(day_plan)
     
-        print(f"\n",plan_days[i])
+        print(f"\n{plan_days[i]}")
         print("-----------")
-        print("Breakfast:",breakfast.name)
-        print("Lunch:", lunch.name)
-        print("Dinner:", dinner.name)
-    
+        print("Breakfast:",day_plan.breakfast.name)
+        print("Lunch:", day_plan.lunch.name)
+        print("Dinner:", day_plan.dinner.name)
+
+    return week_plan

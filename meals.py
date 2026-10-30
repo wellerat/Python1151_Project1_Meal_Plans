@@ -1,6 +1,31 @@
+""" Meal Plannere - Meal Management Module
+
+Description:
+    This module contains functions used to load, save display
+        add, and delete meals from teh Meal Planner application.
+        Meal data is stored in a JSON file and persists 
+        between program executions.
+
+Author:
+    Ann Cooper
+
+Starter Code:
+    None
+
+Date:
+    October 2026        
+"""
 import json
 
 def load_meals():
+    """Load meal data from the JSON file.
+    Returns:
+        dict: Dictionary contatining breakfast, lunch,
+        and dinner meal lists.
+        
+    If the file cannot be found or contains invalid JSON 
+    data, empty meal categories are returned
+    """
     try:
         with open("meals.json", "r") as file:
             return json.load(file)
@@ -20,6 +45,7 @@ def load_meals():
         }
 
 def save_meals(meals):
+    """Swave meal data to the JSAON file"""
     with open("meals.json", "w") as file:
         json.dump(meals, file, indent=4)    
     
@@ -114,7 +140,7 @@ def delete_meal():
     print("-------------------------")
 
     for index, meal in enumerate(meals[category_name], start=1):
-        print(f"{index}.{meal}")
+        print(f"{index}. {meal}")
 
     while True:
         try:
@@ -127,7 +153,7 @@ def delete_meal():
 
         except ValueError:
             print("Please enter a whole number.")
-            
+
     deleted_meal = meals[category_name].pop(choice - 1)     
 
     save_meals(meals)
