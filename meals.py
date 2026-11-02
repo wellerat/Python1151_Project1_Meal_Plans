@@ -1,40 +1,55 @@
-meals = {
-    "breakfast": [
-        "Greek yogurt parfait",
-        "Cereal with toast",
-        "Fruit smoothie",
-        "Biscuits and gravy",
-        "Pancakes with maple syrup",
-        "Pop Tarts",
-        "French Toast with bacon",
-        "Eggs over easy, side of hash browns",
-        "Bagel and creamcheese",
-        "Cinnamon Roll",
-    ],
-    "lunch": [
-        "Traditional club sandwich",
-        "Philly cheese steak",
-        "Ham and cheese sandwich",
-        "Caesar salad",
-        "Tossed salad",
-        "Chicken Salad",
-        "Soup and salad",
-        "Grilled cheese",
-        "Veggie wrap"
-    ],
-    "dinner":[
-        "Fried chicken",
-        "Lasagna",
-        "Chicken Piccata",
-        "General Tso's chicken",
-        "Baked ziti",
-        "Tacos",
-        "Burrito Bowl",
-        "Sirloin Steak",
-        "Veggie plate"
-    ]
+""" Meal Plannere - Meal Management Module
 
-}
+Description:
+    This module contains functions used to load, save display
+        add, and delete meals from teh Meal Planner application.
+        Meal data is stored in a JSON file and persists 
+        between program executions.
+
+Author:
+    Ann Cooper
+
+Starter Code:
+    None
+
+Date:
+    October 2026        
+"""
+import json
+
+def load_meals():
+    """Load meal data from the JSON file.
+    Returns:
+        dict: Dictionary contatining breakfast, lunch,
+        and dinner meal lists.
+        
+    If the file cannot be found or contains invalid JSON 
+    data, empty meal categories are returned
+    """
+    try:
+        with open("meals.json", "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        print("Meal file not found.")
+        return {
+            "breakfast":[],
+            "lunch":[],
+            "dinner":[]
+            }
+    except json.JSONDecodeError:
+        print("Meal file contains invalid JSON")
+        return {
+            "breakfast":[],
+            "lunch":[],
+            "dinner":[]
+        }
+
+def save_meals(meals):
+    """Swave meal data to the JSAON file"""
+    with open("meals.json", "w") as file:
+        json.dump(meals, file, indent=4)    
+    
+meals = load_meals()
 
 def add_additional_meals():
     """Add additional meals to breakfast, lunch or dinner until user quits"""
@@ -62,8 +77,87 @@ def add_additional_meals():
         elif meal_option == 'D':
             meals["dinner"].append(meal_description)
 
+        save_meals(meals)   
+
         print(f"\n{meal_description} has been added.")
 
     print("\nAdding new meals complete.")   
 
+def display_meals():
+    """Display meals from a selected category."""
 
+    print("\nWhich meal category would you like to view:")
+    print("Breakfast (B)")
+    print("Lunch (L)")
+    print("Dinner (D)")
+
+    category = input("\nEnter B, L, or D:  ").upper()
+
+    while category not in ("B","L","D"):
+        print("Please enter B, L, or D.")
+        category = input("\nEnter B, L, or D:  ").upper()
+
+    if category == "B":
+        print("\nBreakfast Meals")
+        print('-----------------')
+        for meal in meals["breakfast"]:
+            print(meal)
+
+    elif category == "L":
+        print("\nLunch Meals")
+        print('-----------------')
+        for meal in meals["lunch"]:
+            print(meal)
+        
+    else: 
+        print("\nDinner Meals")
+        print('-----------------')
+        for meal in meals["dinner"]:
+            print(meal)
+
+def delete_meal():
+    """Remove a meal from selected category."""
+
+    print("\nWhich category would you like to delete from?")
+    print("Breakfast (B)")
+    print("Lunch (L)")
+    print("Dinner (D)")
+
+    category = input("\nEnter B, L, or D:  ").upper()
+    
+    while category not in ("B","L","D"):
+        print("Please enter B, L, or D.")
+        category = input("\nEnter B, L, or D:  ").upper()
+
+    if category =="B":
+        category_name = "breakfast"
+    elif category == "L":
+        category_name = "lunch"
+    else:
+        category_name = "dinner"
+
+    print(f"\n{category_name.capitalize()} Meals")
+    print("-------------------------")
+
+    for index, meal in enumerate(meals[category_name], start=1):
+        print(f"{index}. {meal}")
+
+    while True:
+        try:
+            choice = int(input("\nEnter meal number ot delete:  "))   
+
+            if 1 <= choice <= len(meals[category_name]):
+                break
+
+            print("Please select a valid meal number.")
+
+        except ValueError:
+            print("Please enter a whole number.")
+
+    deleted_meal = meals[category_name].pop(choice - 1)     
+
+    save_meals(meals)
+
+    print(f"\n{deleted_meal} has been removed.")
+        
+    
